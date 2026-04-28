@@ -1,6 +1,6 @@
 # Agent Inc
 
-**Autonomous multi-agent OS** — a personal AI operating system where specialized agents handle trading analysis, job applications, homework, and research simultaneously, powered by the Anthropic API with persistent Supabase memory.
+**Autonomous multi-agent OS** — a personal AI operating system where specialized agents execute tasks on your behalf, powered by the Anthropic API with persistent Supabase memory.
 
 > Built solo. FastAPI · Python · Supabase · Anthropic API · WebSocket
 
@@ -8,28 +8,23 @@
 
 ## What It Does
 
-Agent Inc is an autonomous task execution OS where each agent is a specialized AI with its own memory, context, and purpose. You dispatch tasks through a chat interface, and agents execute them asynchronously — analyzing trading signals, drafting job applications, completing research, or processing homework assignments — all running simultaneously.
+Agent Inc is an autonomous task execution OS. You define what each agent does. Agents run with their own memory, context, and purpose — executing tasks asynchronously through a chat interface while you focus on other things.
 
 ---
 
 ## Agents
 
-| Agent | Purpose |
-|-------|---------|
-| 🧠 **Stryde Agent** | BTC signal analysis, Kalshi odds, trading pipeline coordination |
-| 💼 **Job Agent** | Cover letters, resume tailoring, LinkedIn outreach, application tracking |
-| 📚 **Homework Agent** | Academic research, paper drafting, assignment review |
-| 🔍 **Research Agent** | Deep web research, topic synthesis, fact verification |
-| ⚙️ **Base Agent** | General-purpose tasks, file processing, automation |
+Agents are fully customizable. Each one is built on a shared BaseAgent class and given a system prompt that defines its role. Out of the box, the system ships with several pre-configured agents, but you can add unlimited agents for any purpose without touching core infrastructure.
 
 ---
 
 ## Features
 
-- **Multi-Agent Architecture** — BaseAgent class with extensible per-agent system prompts, MeetingOrchestrator for task handoffs, asynchronous execution
-- **Persistent Memory** — Supabase-backed memory per agent, context survives sessions, scoped so agents don't bleed into each other
+- **Multi-Agent Architecture** — BaseAgent class with extensible per-agent system prompts, MeetingOrchestrator for task handoffs, fully asynchronous execution
+- **Persistent Memory** — Supabase-backed memory per agent, context survives sessions, scoped so agents stay independent
 - **Smart Routing** — provider_factory.py routes to optimal LLM (Anthropic or local Ollama), toggle per conversation
 - **Real-Time UI** — Custom HTML/CSS/JS control panel with live task status, agent health, and chat interface per agent
+- **File Drop Input** — Drop a file on any agent and it auto-processes
 
 ---
 
@@ -61,7 +56,7 @@ open Agent.html
 
 ## Roadmap
 
-- [x] BaseAgent, JobAgent, StrydeAgent, HomeworkAgent, ResearchAgent
+- [x] Modular multi-agent architecture
 - [x] Supabase persistent memory
 - [x] FastAPI backend with REST routes
 - [x] Smart LLM routing (Anthropic / Ollama)
